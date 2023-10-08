@@ -1,0 +1,32 @@
+{
+  "name": "app_dispatch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "vercel-build": "npx prisma generate && next build"
+  },
+  "dependencies": {
+    "@designbycode/tailwindcss-text-shadow": "^2.0.0",
+    "@prisma/client": "^5.3.1",
+    "next": "latest",
+    "next-base64": "^1.1.0",
+    "react": "latest",
+    "react-avatar-edit": "^1.2.0",
+    "react-dom": "latest",
+    "swr": "^2.2.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "latest",
+    "eslint-plugin-react": "^7.33.2",
+    "postcss": "latest",
+    "prisma": "^5.3.1",
+    "tailwindcss": "latest"
+  }
+}
