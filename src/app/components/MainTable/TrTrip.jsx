@@ -14,6 +14,7 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
   const { userData } = useMyContext();
   const [updated, setUpdated] = useState(false);
   const [isLoading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     time: trips.time,
     direction: trips.direction,
@@ -21,8 +22,28 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
     free_seats: trips.free_seats,
   });
 
+  const handleCountPlus = () => {
+    const newCount = formData.free_seats + 1;
+    if (newCount <= userData.seats) {
+      setFormData({
+        ...formData,
+        free_seats: newCount,
+      });
+    }
+  };
+  const handleCountMinus = () => {
+    const newCount = formData.free_seats - 1;
+    if (newCount >= 0) {
+      setFormData({
+        ...formData,
+        free_seats: newCount,
+      });
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     if (
       /^\d*$/.test(value) &&
       (value === "" || parseInt(value) <= userData.seats)
@@ -148,13 +169,17 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
                 className={`font-medium text-2xl text-center ${irish.className}`}
               >
                 {trips.driver.id === userData.id ? (
-                  <input
-                    onChange={handleChange}
-                    className="w-12 appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
-                    type="text"
-                    name="free_seats"
-                    value={formData.free_seats}
-                  />
+                  <>
+                    <button onClick={handleCountPlus}>+</button>
+                    <input
+                      onChange={handleChange}
+                      className="w-12 appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
+                      type="text"
+                      name="free_seats"
+                      value={formData.free_seats}
+                    />
+                    <button onClick={handleCountMinus}>-</button>
+                  </>
                 ) : (
                   trips.free_seats
                 )}
