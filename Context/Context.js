@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { createContext, useContext, useState } from 'react';
-import useSWR from 'swr';
+import React, { createContext, useContext, useState } from "react";
+import useSWR from "swr";
 
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { fetcher } from '@/utils/helpers';
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { fetcher } from "@/utils/helpers";
 
 // Создаем контекст
 const UserDataTimeContext = createContext();
@@ -13,7 +13,8 @@ const UserDataTimeContext = createContext();
 // Создаем провайдер
 export const MyProvider = ({ children }) => {
   const { getValue } = useLocalStorage();
-  const userId = getValue('Authorization');
+
+  const userId = getValue("Authorization");
   const { data } = useSWR(`/api/users/${userId}`, fetcher);
   const [userData, setUserData] = useState(data);
 

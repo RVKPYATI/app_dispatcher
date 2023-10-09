@@ -24,7 +24,10 @@ const NewTrip = ({ time, direction, date }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (/^\d*$/.test(value) && (value === "" || parseInt(value) <= userData.seats)) {
+    if (
+      /^\d*$/.test(value) &&
+      (value === "" || parseInt(value) <= userData.seats)
+    ) {
       setFormData({
         ...formData,
         [name]: value === "" ? "" : Number(value),
@@ -61,8 +64,12 @@ const NewTrip = ({ time, direction, date }) => {
         <td className="text-light text-lg text-center py-4">
           {userData.full_name}
         </td>
-        <td className={`font-medium text-2xl text-center ${irish.className}`}>{time + ":00"}</td>
-        <td className={`font-medium text-2xl text-center ${irish.className}`}>{userData.seats}</td>
+        <td className={`font-medium text-2xl text-center ${irish.className}`}>
+          {time + ":00"}
+        </td>
+        <td className={`font-medium text-2xl text-center ${irish.className}`}>
+          {userData.seats}
+        </td>
         <td className={`font-medium text-2xl text-center ${irish.className}`}>
           <input
             onChange={handleChange}
@@ -101,7 +108,7 @@ const NewTrip = ({ time, direction, date }) => {
         <td>
           <button
             onClick={handleSubmit}
-            disabled={isLoading}
+            disabled={saved}
             className="bg-white border-2 border-primary text-lg text-black w-32 px-4 py-2 mt-1 rounded hover:text-white hover:bg-primaryHover transition ease-in-out duration-500"
           >
             {isLoading ? "Подождите" : "Сохранить"}

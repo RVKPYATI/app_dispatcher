@@ -17,6 +17,7 @@
     "next-base64": "^1.1.0",
     "react": "latest",
     "react-avatar-edit": "^1.2.0",
+    "react-avatar-editor": "^13.0.0",
     "react-dom": "latest",
     "swr": "^2.2.4"
   },
