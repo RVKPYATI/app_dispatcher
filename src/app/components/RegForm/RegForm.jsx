@@ -24,19 +24,7 @@ const RegForm = ({ reg }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { setValue } = useLocalStorage();
-  const [src, setSrc] = useState(null);
-  const [preview, setPreview] = useState(null);
   const [changed, setChanged] = useState(null);
-
-  const onClose = () => {
-    setPreview(null);
-  };
-
-  const onCrop = (view) => {
-    setPreview(view);
-  };
-
-  useEffect(() => {}, [preview]);
 
   const regUser = async (user) => {
     const response = await fetch("/api/users", {
@@ -89,7 +77,7 @@ const RegForm = ({ reg }) => {
       const user = {
         ...formData,
         seats: Number(formData.seats),
-        avatar: preview,
+        avatar: changed,
       };
 
       const responseServer = await regUser(user);
@@ -287,19 +275,8 @@ const RegForm = ({ reg }) => {
           </div>
           <div className="flex justify-between font-light">
             <p className="pr-28 pt-3  text-primary text-sm">Аватар</p>
-            {/* <Avatar
-              width={150}
-              height={150}
-              label={"Выберите изображение"}
-              labelStyle={{
-                fontSize: "10px",
-                paddinRight: "20px"
-              }}
-              onCrop={onCrop}
-              onClose={onClose}
-              src={src}
-            /> */}
-            {/* <UploadAvatar changed={setChanged} /> */}
+
+            <UploadAvatar avatarChange={setChanged} />
           </div>
         </div>
         <div className="flex flex-col items-center">

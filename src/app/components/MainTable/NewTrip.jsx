@@ -106,13 +106,17 @@ const NewTrip = ({ time, direction, date }) => {
         <td></td>
         <td></td>
         <td>
-          <button
-            onClick={handleSubmit}
-            disabled={saved}
-            className="bg-white border-2 border-primary text-lg text-black w-32 px-4 py-2 mt-1 rounded hover:text-white hover:bg-primaryHover transition ease-in-out duration-500"
-          >
-            {isLoading ? "Подождите" : "Сохранить"}
-          </button>
+          {saved ? (
+            ""
+          ) : (
+            <button
+              onClick={handleSubmit}
+              disabled={saved}
+              className="bg-white border-2 border-primary text-lg text-black w-32 px-4 py-2 mt-1 rounded hover:text-white hover:bg-primaryHover transition ease-in-out duration-500"
+            >
+              {isLoading ? "Подождите" : "Сохранить"}
+            </button>
+          )}
         </td>
       </tr>
       <tr>

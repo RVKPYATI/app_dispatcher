@@ -1,10 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AvatarEditor from "react-avatar-editor";
 
 const UploadAvatar = ({ avatarChange }) => {
-  const [editor, setEditor] = useState(null);
   const [src, setSrc] = useState(null);
+  const editorRef = useRef(null);
 
   const onImageChange = (e) => {
     const file = e.target.files[0];
@@ -17,9 +17,9 @@ const UploadAvatar = ({ avatarChange }) => {
     }
   };
 
-  const onSave = () => {
-    if (editor) {
-      const canvas = editor.getImageScaledToCanvas();
+  const onEditorMouseUp = () => {
+    if (editorRef.current) {
+      const canvas = editorRef.current.getImageScaledToCanvas();
       const dataUrl = canvas.toDataURL();
       avatarChange(dataUrl);
     }
@@ -30,17 +30,10 @@ const UploadAvatar = ({ avatarChange }) => {
   }, [src]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
+    <div className="text-center mt-5 rounded-[50%]">
       <label
         htmlFor="imageInput"
-        style={{
-          backgroundColor: "#007bff",
-          color: "#fff",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
+        className=" bg-primary text-white py-4 px-4 rounded-md cursor-pointer"
       >
         Загрузить
       </label>
@@ -52,7 +45,8 @@ const UploadAvatar = ({ avatarChange }) => {
         style={{ display: "none" }}
       />
       <AvatarEditor
-        ref={(editorRef) => setEditor(editorRef)}
+        ref={editorRef}
+        onMouseUp={onEditorMouseUp}
         image={src}
         width={150}
         height={150}
@@ -62,7 +56,6 @@ const UploadAvatar = ({ avatarChange }) => {
         rotate={0} // Поворот
         style={{ margin: "20px auto" }}
       />
-      {src && <button onClick={onSave}>✅</button>}
     </div>
   );
 };
