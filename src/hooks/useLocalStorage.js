@@ -27,6 +27,12 @@ function useLocalStorage() {
     };
 
     return { getValue, setValue, removeValue };
+  } else {
+    return {
+      getValue: () => null,
+      setValue: () => {},
+      removeValue: () => {},
+    };
   }
 }
 
