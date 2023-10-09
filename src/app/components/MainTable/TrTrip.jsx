@@ -170,15 +170,27 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
               >
                 {trips.driver.id === userData.id ? (
                   <>
-                    <button onClick={handleCountPlus}>+</button>
+                    <button
+                      className="mx-2 bg-white p-1 rounded-xl"
+                      onClick={handleCountPlus}
+                    >
+                      +
+                    </button>
+
                     <input
                       onChange={handleChange}
-                      className="w-12 appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
+                      className="w-12 appearance-none border rounded  py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
                       type="text"
                       name="free_seats"
                       value={formData.free_seats}
                     />
-                    <button onClick={handleCountMinus}>-</button>
+
+                    <button
+                      className="mx-2 bg-white p-1 rounded-xl"
+                      onClick={handleCountMinus}
+                    >
+                      -
+                    </button>
                   </>
                 ) : (
                   trips.free_seats
