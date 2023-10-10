@@ -8,7 +8,8 @@ import useSWR from "swr";
 import { fetcher } from "@/utils/helpers";
 
 import { Navbar } from "../Navbar/Navbar";
-import { MainTableRow } from "./MainTableRow";
+//import { MainTableRow } from "./MainTableRow";
+import { MainTableRow } from "./MainTableRow-copy";
 
 import telegram from "@/assets/telegram.png";
 import whatsapp from "@/assets/whatsapp.png";
@@ -88,7 +89,7 @@ const MainTable = () => {
                 <p>Telegram</p>
               </div>
             </Link>
-            <Link href="https://chat.whatsapp.com/ABCDEFG12345" target='_blank'>
+            <Link href="https://chat.whatsapp.com/ABCDEFG12345" target="_blank">
               <div className="flex items-end gap-1 ">
                 <Image src={whatsapp} alt="whatsapp" width={33} height={33} />
                 <p>Whatsapp</p>
@@ -141,7 +142,7 @@ const MainTable = () => {
           </div>
         </div>
         {/*ОБразец*/}
-        <div className="flex justify-between items-center font-light text-xs md:text-[6px] bg-zinc-300">
+        {/* <div className="flex justify-between items-center font-light text-xs md:text-[6px] bg-zinc-300">
           <div className="flex w-[575px] md:w-[full] justify-between">
             <div className="flex w-[450px] justify-center items-center py-2 border-r border-zinc-500">
               Водители
@@ -169,19 +170,33 @@ const MainTable = () => {
               <div className="w-[75px] py-2 text-center">Свободных мест</div>
             </div>
           </div>
-        </div>
-
-        {timeRange.map((time, i) => (
-          <MainTableRow
-            key={time + "-main_table" + time}
-            tripsByDay={data}
-            time={time}
-            i={i}
-            isLoading={isLoading}
-            date={date}
-            day={day}
-          />
-        ))}
+        </div> */}
+        <table className="table-fixed border">
+          <thead>
+            <tr>
+              <th className="">Водители</th>
+              <th>Всего мест</th>
+              <th>Свободных мест</th>
+              <th>Диапазон</th>
+              <th>Водители</th>
+              <th>Всего мест</th>
+              <th>Свободных мест</th>
+            </tr>
+          </thead>
+          <tbody>
+            {timeRange.map((time, i) => (
+              <MainTableRow
+                key={time + "-main_table" + time}
+                tripsByDay={data}
+                time={time}
+                i={i}
+                isLoading={isLoading}
+                date={date}
+                day={day}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
