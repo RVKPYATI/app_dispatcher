@@ -171,7 +171,7 @@ const MainTable = () => {
             </div>
           </div>
         </div> */}
-        <table className="table-fixed border">
+        <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
           <thead>
             <tr>
               <th className="">Водители</th>

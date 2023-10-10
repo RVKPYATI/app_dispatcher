@@ -147,7 +147,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
         }`}
       >
         <td
-          className="w-[450] cursor-pointer border-r border-gray-500"
+          className="w-[450px] cursor-pointer border-r border-gray-500"
           onClick={() => handleClickLeft(div1Ref)}
           ref={div1Ref}
           id={time + " Оренбург-Уфа"}
@@ -174,9 +174,13 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
         <td className="border-r border-gray-500 text-center">
           {countfreeSeats}
         </td>
-        <td className="border-r border-gray-500 text-center">{time + `:00`}</td>
         <td
-          className="cursor-pointer border-r border-gray-500"
+          className={` text-center text-xl font-bold border-r border-gray-500 ${irish.className}`}
+        >
+          {time + `:00`}
+        </td>
+        <td
+          className="w-[450px] cursor-pointer border-r border-gray-500"
           onClick={() => handleClickRight(div2Ref)}
           ref={div2Ref}
           id={time + " Уфа-Оренбург"}
