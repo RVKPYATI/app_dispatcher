@@ -80,11 +80,11 @@ const MainTable = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div className="w-[1200px] sm:w-full pt-20 container mx-auto">
+      <div className="w-[1200px] md:w-full pt-20 md:pt-12 container mx-auto">
         <div className="flex justify-between items-center">
-          <div className="flex gap-7 text-base font-light py-4 sm:flex-wrap">
+          <div className="flex gap-7 md:gap-1 text-base font-light py-4 md:py-1">
             <Link href="https://t.me/+KkdNVQXSWjVmZ" target="_blank">
-              <div className="flex pl-2 items-end gap-1 ">
+              <div className="flex pl-2 md:pl-1 items-end gap-1 md:scale-75">
                 <Image
                   src={telegram}
                   alt="telegram"
@@ -92,11 +92,11 @@ const MainTable = () => {
                   height={33}
                   className="sm:w-5"
                 />
-                <p className="sm:text-sm">Telegram</p>
+                <p className="md:hidden">Telegram</p>
               </div>
             </Link>
             <Link href="https://chat.whatsapp.com/ABCDEFG12345" target="_blank">
-              <div className="flex items-end gap-1 ">
+              <div className="flex items-end gap-1 md:scale-75">
                 <Image
                   src={whatsapp}
                   alt="whatsapp"
@@ -104,11 +104,11 @@ const MainTable = () => {
                   height={33}
                   className="sm:w-5"
                 />
-                <p className="sm:text-sm">Whatsapp</p>
+                <p className="md:hidden">Whatsapp</p>
               </div>
             </Link>
           </div>
-          <div className="text-4xl sm:text-sm mr-24 font-medium sm:text-l">
+          <div className="text-4xl md:text-base mr-24 md:mr-0 font-medium">
             {dayLabel}:{" "}
             {date.toLocaleDateString("ru", {
               day: "numeric",
@@ -117,37 +117,57 @@ const MainTable = () => {
           </div>
           <div
             onClick={handleChangeDay}
-            className="flex gap-1 text-3xl font-light cursor-pointer sm:text-lg"
+            className="flex items-center gap-1 md:gap-0 text-3xl md:text-sm md:pr-2 font-light hover:font-normal underline cursor-pointer"
           >
             {dayLabel2}{" "}
-            <Image src={arrow_right} width={34} height={34} alt="arrow" />
+            <Image
+              src={arrow_right}
+              width={34}
+              height={34}
+              alt="arrow"
+              className={`${
+                dayLabel === "Сегодня" ? "" : "rotate-180"
+              } md:scale-75`}
+            />
           </div>
         </div>
         <div>
-          <div className="flex justify-between py-2 bg-zinc-400">
-            <div className="flex justify-around items-center w-[600px]">
-              <Image src={car} width={37} height={40} alt="car" />
-              <div className="text-3xl font-bold  text-baseColor sm:text-lg">
+          <div className="flex justify-between py-2 md:py-0 bg-zinc-400">
+            <div className="flex justify-around items-center w-[600px] md:w-[300px]">
+              <Image
+                src={car}
+                width={37}
+                height={40}
+                alt="car"
+                className="md:hidden"
+              />
+              <div className="text-3xl md:text-base font-bold  text-baseColor">
                 <h1 className="text-shadow">Оренбург-Уфа</h1>
               </div>
-              <Image src={arrow_white} width={32} height={35} alt="arrow" />
-            </div>
-            <div className="flex justify-around items-center w-[600px]">
               <Image
                 src={arrow_white}
                 width={32}
                 height={35}
-                className="rotate-180"
+                alt="arrow"
+                className="md:scale-50"
+              />
+            </div>
+            <div className="flex justify-around items-center w-[600px] md:w-[300px]">
+              <Image
+                src={arrow_white}
+                width={32}
+                height={35}
+                className="rotate-180 md:scale-50"
                 alt="arrow"
               />
-              <div className="text-3xl font-bold text-white sm:text-lg">
+              <div className="text-3xl md:text-base font-bold text-white">
                 <h1 className="text-shadow">Уфа-Оренбург</h1>
               </div>
               <Image
                 src={car}
                 width={37}
                 height={40}
-                className="scale-x-[-1]"
+                className="scale-x-[-1] md:hidden"
                 alt="car"
               />
             </div>
@@ -185,18 +205,18 @@ const MainTable = () => {
         </div> */}
         <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
           <thead>
-            {/* <tr>
+            <tr>
               <th className="">Водители</th>
               <th className="border-r border-l border-gray-500">Всего мест</th>
               <th>Свободных мест</th>
               <th className="border-r border-l border-gray-500">Диапазон</th>
               <th>Водители</th>
-              <th className="border-r border-l border-gray-500">Всего мест</th>
+              <th className=" border-r border-l border-gray-500">Всего мест</th>
               <th>Свободных мест</th>
-            </tr> */}
+            </tr>
           </thead>
           <tbody>
-            {/* {timeRange.map((time, i) => (
+            {timeRange.map((time, i) => (
               <MainTableRow
                 key={time + "-main_table" + time}
                 tripsByDay={data}
@@ -206,7 +226,7 @@ const MainTable = () => {
                 date={date}
                 day={day}
               />
-            ))} */}
+            ))}
           </tbody>
         </table>
       </div>

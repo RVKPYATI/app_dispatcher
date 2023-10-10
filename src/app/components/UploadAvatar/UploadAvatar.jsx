@@ -48,8 +48,8 @@ const UploadAvatar = ({ avatarChange }) => {
         ref={editorRef}
         onMouseUp={onEditorMouseUp}
         image={src}
-        width={150}
-        height={150}
+        width={250}
+        height={250}
         border={10}
         color={[255, 255, 255, 0.6]} // Цвет рамки
         scale={1.2} // Масштаб

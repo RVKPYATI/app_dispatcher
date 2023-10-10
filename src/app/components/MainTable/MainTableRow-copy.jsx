@@ -14,6 +14,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
   const { mutate } = useSWRConfig();
   const div1Ref = useRef(null);
   const div2Ref = useRef(null);
+
   const [filterData, setFilterData] = useState(null);
   const [timeDirect, setTimeDirect] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,7 +75,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
     tripsByDay &&
       tripsByDay.map((trip) => {
         const { directions } = trip;
-
+        console.log(divRef.current.id);
         if (trip.time.slice(0, 2) === time) {
           const filterDirection = directions?.filter(
             (direction) => direction.direction === "Уфа-Оренбург"
@@ -90,8 +91,8 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
         ) {
           const timeDirect = {};
 
-          timeDirect.time = divRef.current.id.slice(0, 2);
-          timeDirect.direction = divRef.current.id.substr(3);
+          timeDirect.time = divRef.current?.id.slice(0, 2);
+          timeDirect.direction = divRef.current?.id.substr(3);
 
           const filterDirection = [];
 
@@ -139,9 +140,6 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
 
       <tr
         key={"main2" + i}
-        onClick={() => handleClickLeft(div1Ref)}
-        ref={div1Ref}
-        id={time + " Оренбург-Уфа"}
         className={`h-10 font-light text-xs md:text-[6px] ${
           i % 2 === 0 ? "bg-zinc-200" : "bg-zinc-300"
         }`}
@@ -168,14 +166,18 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
               }
             })}
         </td>
-        <td className="border-r border-gray-500 text-center">
+        <td
+          className={`border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
+        >
           {countDriverSeats}
         </td>
-        <td className="border-r border-gray-500 text-center">
+        <td
+          className={` border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
+        >
           {countfreeSeats}
         </td>
         <td
-          className={` text-center text-xl font-bold border-r border-gray-500 ${irish.className}`}
+          className={` text-center text-xl md:text-base font-bold border-r border-gray-500 ${irish.className}`}
         >
           {time + `:00`}
         </td>
@@ -201,10 +203,14 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
               }
             })}
         </td>
-        <td className="border-r border-gray-500 text-center">
+        <td
+          className={`border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
+        >
           {countDriverSeatsRight}
         </td>
-        <td className="text-center">{countfreeSeatsRight}</td>
+        <td className={`text-base md:text-sm text-center ${irish.className}`}>
+          {countfreeSeatsRight}
+        </td>
       </tr>
     </>
   );

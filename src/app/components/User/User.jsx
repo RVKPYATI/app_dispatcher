@@ -83,7 +83,7 @@ export function User() {
           </div>
         )}
         {isMenuOpen && (
-          <div className="absolute flex flex-col items-center top-16 md:top-10 left-0 -translate-x-8 w-40 md:w-20 md:leading-none p-2 bg-primary border-gray-300 rounded shadow-lg z-50 text-center text-baseColor">
+          <div className="absolute flex flex-col items-center top-16 md:top-10 right-0 -translate-x-8 w-[250px] md:w-[20] md:leading-none p-2 bg-primary border-gray-300 rounded shadow-lg z-50 text-center text-baseColor">
             <UploadAvatar avatarChange={setChanged} />
             <div className="flex text-sm gap-2 pt-2 justify-between">
               <button className="hover:text-red-300" onClick={handleClickSave}>

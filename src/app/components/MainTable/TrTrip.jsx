@@ -83,22 +83,22 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
         <>
           {deleted ? (
             <tr className="bg-zinc-300">
-              <td className="text-light text-lg text-center py-4">
+              <td className="text-light text-sm md:text-[8px] text-center py-4">
                 {trips.driver.id === userData.id ? "" : trips.driver.full_name}
               </td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
+                className={`font-medium text-2xl md:text-[8px] text-center ${irish.className}`}
               >
                 {" "}
                 {trips.driver.id === userData.id ? "" : `${trips.time}:00`}
               </td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
+                className={`font-medium text-2xl md:text-sm text-center ${irish.className}`}
               >
                 {trips.driver.id === userData.id ? "" : trips.driver.seats}
               </td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
+                className={`font-medium text-2xl md:text-[8px] text-center ${irish.className}`}
               >
                 {trips.driver.id === userData.id ? "" : trips.free_seats}
               </td>
@@ -154,19 +154,19 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
             </tr>
           ) : (
             <tr className="bg-zinc-300">
-              <td className="text-light text-lg text-center py-4">
+              <td className="text-light text-lg md:text-xs text-center py-4">
                 {trips.driver.full_name}
               </td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
-              >{`${trips.time}:00`}</td>
+                className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
+              >{`${trips.time}`}</td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
+                className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
               >
                 {trips.driver.seats}
               </td>
               <td
-                className={`font-medium text-2xl text-center ${irish.className}`}
+                className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
               >
                 {trips.driver.id === userData.id ? (
                   <>
@@ -233,22 +233,23 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
             <>
               <tr>
                 <td></td>
-                <td></td>
+
                 <td>
                   <button
                     onClick={handleSubmitUpdate}
                     disabled={isLoading}
-                    className="bg-white border-2 border-primary text-lg text-black w-32 px-4 py-2 rounded hover:bg-primaryHover hover:text-white transition ease-in-out duration-500"
+                    className="bg-white border-2 border-primary text-lg md:text-sm text-black w-18 px-4 py-2 rounded hover:bg-primaryHover hover:text-white transition ease-in-out duration-500"
                   >
                     {isLoading ? "Подождите" : "Обновить"}
                   </button>
                 </td>
-
+                <td></td>
+                <td></td>
                 <td>
                   <button
                     onClick={() => handleDeleteTrip(trips.id)}
                     disabled={loadingDel}
-                    className="bg-white border-2 border-red-600 text-lg text-black hover:text-white w-32 px-4 py-2 mt-1 rounded hover:bg-primaryHover transition ease-in-out duration-500"
+                    className="bg-white border-2 border-red-600 text-lg md:text-sm text-black hover:text-white w-18 px-4 py-2 mt-1 rounded hover:bg-primaryHover transition ease-in-out duration-500"
                   >
                     {loadingDel ? "Подождите" : "Удалить"}
                   </button>

@@ -61,16 +61,22 @@ const NewTrip = ({ time, direction, date }) => {
   return (
     <>
       <tr className="bg-zinc-300">
-        <td className="text-light text-lg text-center py-4">
+        <td className="text-light text-lg md:text-xs text-center py-4">
           {userData.full_name}
         </td>
-        <td className={`font-medium text-2xl text-center ${irish.className}`}>
+        <td
+          className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
+        >
           {time + ":00"}
         </td>
-        <td className={`font-medium text-2xl text-center ${irish.className}`}>
+        <td
+          className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
+        >
           {userData.seats}
         </td>
-        <td className={`font-medium text-2xl text-center ${irish.className}`}>
+        <td
+          className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
+        >
           <input
             onChange={handleChange}
             className="w-12 appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
