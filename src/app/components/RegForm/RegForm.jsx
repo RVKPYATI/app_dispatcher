@@ -100,9 +100,9 @@ const RegForm = ({ reg }) => {
 
   return (
     <>
-      <div className="w-full px-5 text-center">
-        <h2 className="text-primary font-light mb-6 sm:mb-14">
-          Для регистрации в системе введите свои данные
+      <div className="w-full px-5 text-center md:mt-[16rem]">
+        <h2 className="text-primary font-light mb-6 md:mt-14">
+          Для регистрации в системе введите свои учетные данные
         </h2>
       </div>
       <form onSubmit={handleSubmit} className="relative">
