@@ -29,6 +29,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
   };
 
   const handleClickLeft = (divRef) => {
+    //console.log(divRef.current.querySelector("img"));
     const timeDirect = {};
     const filterDirection = [];
     timeDirect.time = divRef.current.id.slice(0, 2);

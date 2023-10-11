@@ -14,11 +14,10 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
   const { mutate } = useSWRConfig();
   const div1Ref = useRef(null);
   const div2Ref = useRef(null);
-
   const [filterData, setFilterData] = useState(null);
   const [timeDirect, setTimeDirect] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(filterData);
+
   const openModal = (filterDirection, timeDirect) => {
     setIsModalOpen(true);
     setFilterData(filterDirection);
@@ -40,19 +39,17 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
     tripsByDay &&
       tripsByDay.map((trip) => {
         const { directions } = trip;
-
-        //divRef.current.querySelector("img")
+        console.log(divRef.current);
         if (trip.time.slice(0, 2) === time) {
           const filterDirection = directions?.filter(
             (direction) => direction.direction === "Оренбург-Уфа"
           );
-          console.log(filterDirection);
+
           openModal(filterDirection);
         }
 
         if (
-          (divRef.current.textContent.length === 0 &&
-            !divRef.current.querySelector("img")) ||
+          divRef.current.textContent.length === 0 ||
           (divRef.current.textContent.length === 1 &&
             divRef.current.id.substr(3) === "Оренбург-Уфа")
         ) {
@@ -62,7 +59,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
           timeDirect.direction = divRef.current.id.substr(3);
 
           const filterDirection = [];
-          //console.log(filterDirection.length);
+          console.log(filterDirection.length);
           openModal(filterDirection, timeDirect);
         }
       });
@@ -88,15 +85,14 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
         }
 
         if (
-          (divRef.current.textContent.length === 0 &&
-            !divRef.current.querySelector("img")) ||
+          divRef.current.textContent.length === 0 ||
           (divRef.current.textContent.length === 1 &&
             divRef.current.id.substr(3) === "Уфа-Оренбург")
         ) {
           const timeDirect = {};
 
-          timeDirect.time = divRef.current?.id.slice(0, 2);
-          timeDirect.direction = divRef.current?.id.substr(3);
+          timeDirect.time = divRef.current.id.slice(0, 2);
+          timeDirect.direction = divRef.current.id.substr(3);
 
           const filterDirection = [];
 
@@ -147,77 +143,29 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
         className={`h-10 font-light text-xs md:text-[6px] ${
           i % 2 === 0 ? "bg-zinc-200" : "bg-zinc-300"
         }`}
+      ></tr>
+      <td
+        className="w-[450px] cursor-pointer border-r border-gray-500"
+        onClick={() => handleClickLeft(div1Ref)}
+        ref={div1Ref}
+        id={time + " Оренбург-Уфа"}
       >
-        <td
-          className="w-[450px] cursor-pointer border-r border-gray-500"
-          onClick={() => handleClickLeft(div1Ref)}
-          ref={div1Ref}
-          id={time + " Оренбург-Уфа"}
-          key={"mai" + i}
-        >
-          {tripsByDay &&
-            tripsByDay.map((trip, i) => {
-              const { directions } = trip;
-              if (trip.time.slice(0, 2) === time) {
-                directionsData2.push(directions);
-                return (
-                  <TripInfo
-                    key={i + "_left_" + i}
-                    data={directions}
-                    direct="Оренбург-Уфа"
-                    timeText={time}
-                  />
-                );
-              }
-            })}
-        </td>
-        <td
-          className={`border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
-        >
-          {countDriverSeats}
-        </td>
-        <td
-          className={` border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
-        >
-          {countfreeSeats}
-        </td>
-        <td
-          className={` text-center text-xl md:text-base font-bold border-r border-gray-500 ${irish.className}`}
-        >
-          {time + `:00`}
-        </td>
-        <td
-          className="w-[450px] cursor-pointer border-r border-gray-500"
-          onClick={() => handleClickRight(div2Ref)}
-          ref={div2Ref}
-          id={time + " Уфа-Оренбург"}
-          key={"mail" + i}
-        >
-          {tripsByDay &&
-            tripsByDay.map((trip, i) => {
-              const { directions } = trip;
-              if (trip.time.slice(0, 2) === time) {
-                directionsData.push(directions);
-                return (
-                  <TripInfo
-                    key={i + "_left_" + i}
-                    data={directions}
-                    direct="Уфа-Оренбург"
-                    timeText={time}
-                  />
-                );
-              }
-            })}
-        </td>
-        <td
-          className={`border-r border-gray-500 text-base md:text-sm text-center ${irish.className}`}
-        >
-          {countDriverSeatsRight}
-        </td>
-        <td className={`text-base md:text-sm text-center ${irish.className}`}>
-          {countfreeSeatsRight}
-        </td>
-      </tr>
+        {tripsByDay &&
+          tripsByDay.map((trip, i) => {
+            const { directions } = trip;
+            if (trip.time.slice(0, 2) === time) {
+              directionsData2.push(directions);
+              return (
+                <TripInfo
+                  key={i + "_left_" + i}
+                  data={directions}
+                  direct="Оренбург-Уфа"
+                  timeText={time}
+                />
+              );
+            }
+          })}
+      </td>
     </>
   );
 };

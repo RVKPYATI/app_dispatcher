@@ -74,7 +74,7 @@ export function User() {
         )}
         {userData && !userData?.avatar && (
           <div
-            className="flex items-center justify-center ml-1 my-2 w-9 h-9 md:w-6 md:h-6 shadow-xl outline outline-offset-2 outline-2 outline-baseColor bg-driver1 border-gray-700 border-2 rounded-full cursor-pointer"
+            className="flex items-center justify-center my-2 w-9 h-9 md:w-6 md:h-6 shadow-xl outline outline-offset-2 outline-2 outline-baseColor bg-driver1 border-gray-700 border-2 rounded-full cursor-pointer"
             onClick={toggleMenu}
           >
             <span className="font-medium text-base text-baseColor drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-xs">

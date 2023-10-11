@@ -157,9 +157,9 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
               <td className="text-light text-lg md:text-xs text-center py-4">
                 {trips.driver.full_name}
               </td>
-              <td
+              {/* <td
                 className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
-              >{`${trips.time}`}</td>
+              >{`${trips.time}`}</td> */}
               <td
                 className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
               >
@@ -169,9 +169,9 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
                 className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
               >
                 {trips.driver.id === userData.id ? (
-                  <>
+                  <div className="flex justify-center md:items-center md:flex-col gap-1">
                     <button
-                      className="mx-2 bg-white p-1 rounded-xl"
+                      className="bg-white rounded-full w-8 h-8"
                       onClick={handleCountPlus}
                     >
                       +
@@ -179,19 +179,19 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
 
                     <input
                       onChange={handleChange}
-                      className="w-12 appearance-none border rounded  py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners"
+                      className="w-12 appearance-none border rounded  py-2 px-3 leading-tight focus:outline-none focus:shadow-outline no-spinners md:w-8"
                       type="text"
                       name="free_seats"
                       value={formData.free_seats}
                     />
 
                     <button
-                      className="mx-2 bg-white p-1 rounded-xl"
+                      className=" bg-white rounded-full w-8 h-8"
                       onClick={handleCountMinus}
                     >
                       -
                     </button>
-                  </>
+                  </div>
                 ) : (
                   trips.free_seats
                 )}
@@ -204,6 +204,7 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
                       alt="whatsapp"
                       width={33}
                       height={33}
+                      className="md:w-7"
                     />
                   </div>
                 </Link>
@@ -216,6 +217,7 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
                       alt="telegram"
                       width={33}
                       height={33}
+                      className="md:w-7"
                     />
                   </div>
                 </Link>
@@ -223,7 +225,13 @@ const TrTrip = ({ trips, loadingDel, handleDeleteTrip, deleted }) => {
               <td>
                 <Link href={`tel:${trips.driver.mobile_phone}`}>
                   <div className="flex justify-center items-center">
-                    <Image src={phone} alt="phone" width={30} height={30} />
+                    <Image
+                      src={phone}
+                      alt="phone"
+                      width={30}
+                      height={30}
+                      className="md:w-7"
+                    />
                   </div>
                 </Link>
               </td>

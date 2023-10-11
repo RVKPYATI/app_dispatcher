@@ -30,12 +30,13 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
       setLoadingDel(false);
     }
   };
-
+  console.log(data);
   if (data.length > 0) {
     const { items } = data[0];
     const { direction, time } = items[0];
 
     const userExists = items.some((item) => item.driverId === userData.id);
+
     return (
       <>
         {items && (
@@ -46,7 +47,7 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
                   {direction}
                 </div>
                 <div
-                  className={`mx-16 md:mx-8 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
+                  className={`mx-16 md:mx-0 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
                 >
                   {`${time} - ${time.slice(0, 2)}:59`}
                 </div>
@@ -68,7 +69,7 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
                   <th className="font-light w-[300px] md:w-[70px] text-center py-4">
                     ФИО
                   </th>
-                  <th className="font-light text-center py-4">Время</th>
+                  {/* <th className="font-light text-center py-4">Время</th> */}
                   <th className="font-light text-center py-4">
                     Посадочных мест
                   </th>
@@ -117,7 +118,7 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
               {timeDirect.direction}
             </div>
             <div
-              className={`mx-16 md:mx-8 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
+              className={`mx-16 md:mx-0 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
             >
               {`${timeDirect.time}:00 - ${timeDirect.time.slice(0, 2)}:59`}
             </div>
@@ -137,7 +138,7 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
               <th className="font-light w-[300px] md:w-[70px] text-center py-4">
                 ФИО
               </th>
-              <th className="font-light text-center py-4">Время</th>
+              {/* <th className="font-light text-center py-4">Время</th> */}
               <th className="font-light text-center py-4">Посадочных мест</th>
               <th className="font-light text-center py-4">Свободных мест</th>
               <th className="font-light text-center py-4">WhatsApp</th>

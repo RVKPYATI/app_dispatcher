@@ -10,12 +10,14 @@ import { fetcher } from "@/utils/helpers";
 //import { Navbar } from "../Navbar/Navbar";
 //import { MainTableRow } from "./MainTableRow";
 import { MainTableRow } from "./MainTableRow-copy";
+//import { MainTableRow } from "./MainTableRow new";
 
 import telegram from "@/assets/telegram.png";
 import whatsapp from "@/assets/whatsapp.png";
 import arrow_right from "@/assets/arrow_right.svg";
 import car from "@/assets/car.svg";
 import arrow_white from "@/assets/arrow_white.svg";
+import { Loading } from "../Loading/Loading";
 
 const MainTable = () => {
   const timeRange = [
@@ -203,32 +205,42 @@ const MainTable = () => {
             </div>
           </div>
         </div> */}
-        <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
-          <thead>
-            <tr>
-              <th className="">Водители</th>
-              <th className="border-r border-l border-gray-500">Всего мест</th>
-              <th>Свободных мест</th>
-              <th className="border-r border-l border-gray-500">Диапазон</th>
-              <th>Водители</th>
-              <th className=" border-r border-l border-gray-500">Всего мест</th>
-              <th>Свободных мест</th>
-            </tr>
-          </thead>
-          <tbody>
-            {timeRange.map((time, i) => (
-              <MainTableRow
-                key={time + "-main_table" + time}
-                tripsByDay={data}
-                time={time}
-                i={i}
-                isLoading={isLoading}
-                date={date}
-                day={day}
-              />
-            ))}
-          </tbody>
-        </table>
+        {isLoading ? (
+          <div className="flex justify-center ">
+            <Loading />
+          </div>
+        ) : (
+          <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
+            <thead>
+              <tr>
+                <th className="">Водители</th>
+                <th className="border-r border-l border-gray-500">
+                  Всего мест
+                </th>
+                <th>Свободных мест</th>
+                <th className="border-r border-l border-gray-500">Диапазон</th>
+                <th>Водители</th>
+                <th className=" border-r border-l border-gray-500">
+                  Всего мест
+                </th>
+                <th>Свободных мест</th>
+              </tr>
+            </thead>
+            <tbody>
+              {timeRange.map((time, i) => (
+                <MainTableRow
+                  key={time + "-main_table" + time}
+                  tripsByDay={data}
+                  time={time}
+                  i={i}
+                  isLoading={isLoading}
+                  date={date}
+                  day={day}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );

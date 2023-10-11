@@ -64,11 +64,11 @@ const NewTrip = ({ time, direction, date }) => {
         <td className="text-light text-lg md:text-xs text-center py-4">
           {userData.full_name}
         </td>
-        <td
+        {/* <td
           className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
         >
           {time + ":00"}
-        </td>
+        </td> */}
         <td
           className={`font-medium text-2xl md:text-xs text-center ${irish.className}`}
         >
