@@ -30,7 +30,7 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
       setLoadingDel(false);
     }
   };
-  console.log(data);
+
   if (data.length > 0) {
     const { items } = data[0];
     const { direction, time } = items[0];
@@ -49,8 +49,15 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
                 <div
                   className={`mx-16 md:mx-0 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
                 >
-                  {`${time} - ${time.slice(0, 2)}:59`}
+                  {`${time}:00 - ${time.slice(0, 2)}:59`}
+                  <div className="text-lg text-center text-">
+                    {date.toLocaleDateString("ru", {
+                      day: "numeric",
+                      month: "long",
+                    })}
+                  </div>
                 </div>
+
                 <div key={time + "2"}>
                   <button
                     onClick={handleClickAdd}
@@ -121,6 +128,12 @@ const TripRow = ({ data, direct, timeDirect, date }) => {
               className={`mx-16 md:mx-0 font-normal text-6xl md:text-lg md:text-center ${irish.className}`}
             >
               {`${timeDirect.time}:00 - ${timeDirect.time.slice(0, 2)}:59`}
+              <div className="text-lg text-center text-">
+                {date.toLocaleDateString("ru", {
+                  day: "numeric",
+                  month: "long",
+                })}
+              </div>
             </div>
             <div>
               <button

@@ -18,7 +18,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
   const [filterData, setFilterData] = useState(null);
   const [timeDirect, setTimeDirect] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(filterData);
+
   const openModal = (filterDirection, timeDirect) => {
     setIsModalOpen(true);
     setFilterData(filterDirection);
