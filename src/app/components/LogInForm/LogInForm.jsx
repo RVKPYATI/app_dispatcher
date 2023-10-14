@@ -183,14 +183,14 @@ function LogInForm({ reg }) {
         <p className="text-primary font-light text-sm">
           У меня нет аккаунта.{" "}
           <span
-            className="font-bold underline cursor-pointer"
+            className="font-bold underline cursor-pointer md:hidden"
             onClick={() => reg(true)}
           >
             Зарегистрироваться
           </span>
         </p>
       </div>
-      <p className="text-primary font-light text-sm hidden ">
+      <p className="text-primary font-light text-sm hidden md:block">
         Для регистрации в системе обратитесь к диспетчеру.
       </p>
     </>
