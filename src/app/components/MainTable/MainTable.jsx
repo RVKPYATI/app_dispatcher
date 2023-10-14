@@ -81,7 +81,6 @@ const MainTable = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className="w-[1200px] md:w-full pt-20 md:pt-12 container mx-auto">
         <div className="flex justify-between items-center">
           <div className="flex gap-7 md:gap-1 text-base font-light py-4 md:py-1">
@@ -134,7 +133,7 @@ const MainTable = () => {
           </div>
         </div>
         <div>
-          <div className="flex justify-between py-2 md:py-0 bg-zinc-400">
+          <div className="flex justify-between py-2 md:py-0 bg-primary">
             <div className="flex justify-around items-center w-[600px] md:w-[300px]">
               <Image
                 src={car}
@@ -175,36 +174,7 @@ const MainTable = () => {
             </div>
           </div>
         </div>
-        {/*ОБразец*/}
-        {/* <div className="flex justify-between items-center font-light text-xs md:text-[6px] bg-zinc-300">
-          <div className="flex w-[575px] md:w-[full] justify-between">
-            <div className="flex w-[450px] justify-center items-center py-2 border-r border-zinc-500">
-              Водители
-            </div>
-            <div className="flex w-[125px] justify-center items-center leading-none">
-              <div className=" w-[50px] py-2 text-center border-r border-zinc-500">
-                Всего мест
-              </div>
-              <div className="w-[75px] py-2 text-center border-r border-zinc-500">
-                Свободных мест
-              </div>
-            </div>
-          </div>
-          <div className="w-[70px] py-3 px-1 text-center border-r border-zinc-500">
-            Диапазон
-          </div>
-          <div className="flex w-[575px] md:w-[full] justify-between">
-            <div className="flex w-[430px] justify-center items-center py-2 border-r border-zinc-500">
-              Водители
-            </div>
-            <div className="flex w-[125px] justify-center items-center leading-none">
-              <div className=" w-[50px] py-2 text-center border-r border-zinc-500">
-                Всего мест
-              </div>
-              <div className="w-[75px] py-2 text-center">Свободных мест</div>
-            </div>
-          </div>
-        </div> */}
+
         {isLoading ? (
           <div className="flex justify-center ">
             <Loading />
@@ -213,17 +183,19 @@ const MainTable = () => {
           <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
             <thead>
               <tr>
-                <th className="">Водители</th>
-                <th className="border-r border-l border-gray-500">
+                <th className="leading-none">Водители</th>
+                <th className="border-r border-l border-gray-500 leading-none">
                   Всего мест
                 </th>
-                <th>Свободных мест</th>
-                <th className="border-r border-l border-gray-500">Диапазон</th>
-                <th>Водители</th>
-                <th className=" border-r border-l border-gray-500">
+                <th className="leading-none">Свободных мест</th>
+                <th className="border-r border-l border-gray-500 leading-none">
+                  Диапазон
+                </th>
+                <th className="leading-none">Водители</th>
+                <th className=" border-r border-l border-gray-500 leading-none">
                   Всего мест
                 </th>
-                <th>Свободных мест</th>
+                <th className="leading-none">Свободных мест</th>
               </tr>
             </thead>
             <tbody>

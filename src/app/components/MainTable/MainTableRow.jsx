@@ -145,7 +145,7 @@ const MainTableRow = ({ tripsByDay, isLoading, time, i, date, day }) => {
       <tr
         key={"main2" + i}
         className={`h-10 font-light text-xs md:text-[6px] ${
-          i % 2 === 0 ? "bg-zinc-200" : "bg-zinc-300"
+          i % 2 === 0 ? "bg-indigo-200" : "bg-indigo-300"
         }`}
       >
         <td
