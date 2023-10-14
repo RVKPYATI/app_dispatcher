@@ -180,22 +180,22 @@ const MainTable = () => {
             <Loading />
           </div>
         ) : (
-          <table className="table-fixed border font-light text-xs md:text-[6px] bg-zinc-300">
+          <table className="table-fixed border font-light text-xs md:text-[6px] bg-indigo-300">
             <thead>
               <tr>
-                <th className="leading-none">Водители</th>
-                <th className="border-r border-l border-gray-500 leading-none">
+                <th className="leading-none py-2">Водители</th>
+                <th className="border-r border-l border-gray-500 leading-none py-2">
                   Всего мест
                 </th>
-                <th className="leading-none">Свободных мест</th>
-                <th className="border-r border-l border-gray-500 leading-none">
+                <th className="leading-none py-2">Свободных мест</th>
+                <th className="border-r border-l border-gray-500 leading-none py-2">
                   Диапазон
                 </th>
                 <th className="leading-none">Водители</th>
-                <th className=" border-r border-l border-gray-500 leading-none">
+                <th className=" border-r border-l border-gray-500 leading-none py-2">
                   Всего мест
                 </th>
-                <th className="leading-none">Свободных мест</th>
+                <th className="leading-none py-2">Свободных мест</th>
               </tr>
             </thead>
             <tbody>
